@@ -1,6 +1,6 @@
 {
   "name": "postgrest-typescript",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "description": "Typescript Client for Postgrest",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,11 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^1.27.0",
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "@types/config": "0.0.33",
     "@types/node": "^8.0.47",
     "@types/request": "^2.0.8"
   }
