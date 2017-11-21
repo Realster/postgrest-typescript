@@ -22,9 +22,14 @@ export class Repository<T extends Model<any>> {
     this.postgrest = postgrest;
   }
 
-  public async getAll(query?: Query): Promise<T[]> {
-    const response = await this.postgrest.query(
-      this.tableName, "GET", null, null, query);
+  public async getAll(query?: Query, headers?: any): Promise<T[]> {
+    const response = await this.postgrest.query({
+      body: null,
+      headers,
+      query,
+      tableName: this.tableName,
+      verb: "GET",
+    });
     const models = new Array<T>();
     const length = response.body.length;
     for (let i = 0; i < length; i++) {

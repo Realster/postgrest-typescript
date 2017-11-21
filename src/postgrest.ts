@@ -24,17 +24,23 @@ export class Postgrest {
     }
   }
 
-  public async query(tableName: string, verb: string, headers?: any, body?: any, query?: Query) {
+  public async query(requestParameters: {
+    tableName: string;
+    verb: string;
+    headers?: any;
+    body?: any;
+    query?: Query;
+  }) {
     if (!this.isConnected()) {
       throw new Error("Not Connected yet");
     }
     return new Promise<any>((resolve, reject) => {
-      const queryString = query ? query.getQuery() : "";
-      request(`${this.connection}/${tableName}?${queryString}`, {
-        body,
-        headers,
+      const queryString = requestParameters.query ? requestParameters.query.getQuery() : "";
+      request(`${this.connection}/${requestParameters.tableName}?${queryString}`, {
+        body: requestParameters.body,
+        headers: requestParameters.headers,
         json: true,
-        method: verb,
+        method: requestParameters.verb,
       }, (err, response) => {
         if (err) {
           reject(err);
