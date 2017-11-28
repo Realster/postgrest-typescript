@@ -36,6 +36,9 @@ const test = async () => {
     group1.properties.name = group1.properties.name + 1;
     const updatedGroup = await group1.update();
     console.dir(updatedGroup);
+    await updatedGroup.delete();
+    const createdGroup = await updatedGroup.create();
+    console.dir(createdGroup);
   } catch (err) {
     console.error(err);
   }

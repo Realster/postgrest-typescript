@@ -56,7 +56,6 @@ export class Model<T> {
       verb: "DELETE",
     });
     this.properties = result.body;
-    return this;
   }
 
   public get TableName() {
